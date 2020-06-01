@@ -12,7 +12,7 @@ def take_photo(filename='photo.jpg', quality=0.8):
 
       const video = document.createElement('video');
       video.style.display = 'block';
-      var constraints = { video: { width: 400, height: 400, facingMode: { exact: "environment" } } };
+      var constraints = { video: { width: 800, height: 800, facingMode: { exact: "environment" } } };
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
 
       document.body.appendChild(div);
