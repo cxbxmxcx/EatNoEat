@@ -48,3 +48,8 @@ def create_model(image_batch):
                 loss=tf.keras.losses.MeanAbsoluteError(),
                 metrics=['mae', 'mse', 'accuracy'])
   return model
+
+def observe_image(image, model):  
+  x, _ = load_image(image)  
+  img = x[np.newaxis, ...]
+  return model.predict(img)
