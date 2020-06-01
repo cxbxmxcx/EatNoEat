@@ -1,4 +1,8 @@
+import tensorflow as tf
 from collections import deque
+from tensorflow import keras
+import numpy as np
+import random
 
 EPISODES = 500
 TRAIN_END = 0
