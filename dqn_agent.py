@@ -101,3 +101,35 @@ class DeepQNetwork():
     #Decay Epsilon
     if self.epsilon > self.epsilon_min:
         self.epsilon *= self.epsilon_decay
+
+def train_dqn(training_folder):
+    #Create the agent
+    nS = 3
+    nA = 2
+    dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 1, 0.001, 0.9985 )
+
+    batch_size = batch_size()
+
+    test_foods = pickle.load( open( training_folder + "food_test.p", "rb" ) )
+    print(test_foods)
+
+    foods = len(test_foods)
+    tests_per_food = 30
+    next_food = random.choice(test_foods)
+    tot_rewards = 0
+    for ft in nb.tqdm(range(tests_per_food * foods)):  
+      food = next_food
+      state = food[0]  
+      action = dqn.action(state)
+      reward = 1 if food[1] == action else -1  
+      tot_rewards += reward
+      next_food = random.choice(test_foods)
+      nstate = next_food[0]
+      done = False
+      dqn.store(state, action, reward, nstate, done) # Resize to store in memory to pass to .predict
+      with tf.name_scope('Training'):
+        tf.summary.scalar('rewards', data=tot_rewards, step=ft) 
+        tf.summary.scalar('epsilon', data=dqn.epsilon, step=ft)  
+      if len(dqn.memory) > batch_size:
+          dqn.experience_replay(batch_size, ft)
+  
