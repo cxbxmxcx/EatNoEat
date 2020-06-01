@@ -3,6 +3,7 @@ from collections import deque
 from tensorflow import keras
 import numpy as np
 import random
+import pickle
 
 EPISODES = 500
 TRAIN_END = 0
@@ -14,8 +15,6 @@ def discount_rate(): #Gamma
 def learning_rate(): #Alpha
     return 0.001
 
-def batch_size(): #Size of the batch used in the experience replay
-    return 24
 
 class DeepQNetwork():
   def __init__(self, states, actions, alpha, gamma, epsilon,epsilon_min, epsilon_decay):
