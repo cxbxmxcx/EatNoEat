@@ -4,6 +4,7 @@ from tensorflow import keras
 import numpy as np
 import random
 import pickle
+import tqdm.notebook as nb
 
 EPISODES = 500
 TRAIN_END = 0
