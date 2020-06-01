@@ -132,4 +132,6 @@ def train_dqn(training_folder):
         tf.summary.scalar('epsilon', data=dqn.epsilon, step=ft)  
       if len(dqn.memory) > batch_size:
           dqn.experience_replay(batch_size, ft)
+
+    return dqn
   
