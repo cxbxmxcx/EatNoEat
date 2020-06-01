@@ -108,7 +108,7 @@ def train_dqn(training_folder):
     nA = 2
     dqn = DeepQNetwork(nS, nA, learning_rate(), discount_rate(), 1, 0.001, 0.9985 )
 
-    batch_size = batch_size()
+    batch_size = 24 # batch_size()
 
     test_foods = pickle.load( open( training_folder + "food_test.p", "rb" ) )
     print(test_foods)
