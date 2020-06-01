@@ -1,3 +1,5 @@
+from collections import deque
+
 EPISODES = 500
 TRAIN_END = 0
 
