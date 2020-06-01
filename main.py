@@ -14,12 +14,12 @@ from glob import glob
 from PIL import Image
 import pickle
 
-def load_data():
-	data_folder = 'data'
-	recipes_zip = tf.keras.utils.get_file('recipes.zip',                                     
-											  origin = 'https://www.dropbox.com/s/i1hvs96mnahozq0/Recipes5k.zip?dl=1',
-											  extract = True)
-	print(recipes_zip)
-	data_folder = os.path.dirname(recipes_zip)
-	os.remove(recipes_zip)
-	print(data_folder)
+
+data_folder = 'data'
+recipes_zip = tf.keras.utils.get_file('recipes.zip',                                     
+											origin = 'https://www.dropbox.com/s/i1hvs96mnahozq0/Recipes5k.zip?dl=1',
+											extract = True)
+print(recipes_zip)
+data_folder = os.path.dirname(recipes_zip)
+os.remove(recipes_zip)
+print(data_folder)
