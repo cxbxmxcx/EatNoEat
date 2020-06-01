@@ -12,7 +12,7 @@ def take_photo(filename='photo.jpg', quality=0.8):
 
       const video = document.createElement('video');
       video.style.display = 'block';
-      const stream = await navigator.mediaDevices.getUserMedia({video: { facingMode: { exact: "environment" }}});
+      const stream = await navigator.mediaDevices.getUserMedia({video: true});
 
       document.body.appendChild(div);
       div.appendChild(video);
